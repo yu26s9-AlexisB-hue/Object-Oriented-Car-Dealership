@@ -7,19 +7,20 @@ import java.util.Scanner;
 public class UserInterface {
     private Dealership dealership;
 
-    private Scanner scanner = new Scanner(System.in);
-
 
     public void display(){
         init();
         boolean running = true;
 
         while(running){
-            System.out.println("1 - View Vehicles");
-            System.out.println("0 - Exit");
+            //Creating a variable to hold the prompts to ask the user.
+            String prompt = """
+                    1 - View Vehicles
+                    0 - Exit
+                    """;
 
-            int command = scanner.nextInt();
-            scanner.nextLine();
+            //Takes and returns the users input into the command.
+            int command = Console.promptForInt(prompt);
 
             switch(command){
                 case 1:
