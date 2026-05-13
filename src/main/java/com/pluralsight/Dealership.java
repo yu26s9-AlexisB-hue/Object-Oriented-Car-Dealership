@@ -40,8 +40,18 @@ public class Dealership {
         this.name = name;
     }
 
-    public static void getVehiclesByPrice(){
+    public List<Vehicle> getVehiclesByPrice(double min, double max){
         //min and max, pass array list through it
+        List<Vehicle> matchingVehicles = new ArrayList<>();
+
+        for(Vehicle vehicle : inventory){
+
+            if(vehicle.getPrice() >= min && vehicle.getPrice() <= max){
+                matchingVehicles.add(vehicle);
+            }
+        }
+        return matchingVehicles;
+
     }
     public static void getVehiclesByMakeModel(){
         //make, model  and array list
@@ -62,7 +72,6 @@ public class Dealership {
     public List<Vehicle> getAllVehicles(){
        return this.inventory;
     }
-
     public void addVehicle(Vehicle vehicle){
         inventory.add(vehicle);
 //        //add vehicles to array list
