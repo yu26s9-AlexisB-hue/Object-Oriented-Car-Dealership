@@ -1,4 +1,4 @@
-package com.pluralsight;
+package pluralsight;
 
 import org.junit.jupiter.api.Test;
 

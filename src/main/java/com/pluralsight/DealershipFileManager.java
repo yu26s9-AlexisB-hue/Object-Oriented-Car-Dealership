@@ -1,39 +1,12 @@
 package com.pluralsight;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DealershipFileManager {
-    private static void temporaryFile(List<Vehicle> inventory) {
-        try {
-            File tempFile = File.createTempFile("transaction", ".csv");
-            FileWriter writer = new FileWriter(tempFile);
 
-            for(int i = 0; i < inventory.size(); i++) {
-               Vehicle vehicle = inventory.get(i);
-                writer.write(vehicle.getVin() + "|" +
-                        vehicle.getYear() + "|" +
-                        vehicle.getMake() + "|" +
-                        vehicle.getModel() + "|" +
-                        vehicle.getVehicleType() + "|" +
-                        vehicle.getColor() + "|" +
-                        vehicle.getOdometer() + "|" +
-                        vehicle.getPrice()
-                );
-                writer.write("\n");
-            }
-            writer.close();
-
-            //Prints the full location(path) of the temporary file you just created.
-            System.out.println("Temp file created at: " + tempFile.getAbsolutePath());
-
-        } catch (IOException e) {
-
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public static void getDealership(){
+    public static Dealership getDealership(){
 
         Dealership dealership = null;
 
@@ -53,14 +26,29 @@ public class DealershipFileManager {
                 );
 
                 // Remaining lines = vehicles
-            }
+                while ((line = reader.readLine()) != null){
+                    String[] vehicleData = line.split("\\|");
 
+                    Vehicle vehicle = new Vehicle(
+                            Integer.parseInt(vehicleData[0]),
+                            Integer.parseInt(vehicleData[1]),
+                            vehicleData[2],
+                            vehicleData[3],
+                            vehicleData[4],
+                            vehicleData[5],
+                            Integer.parseInt(vehicleData[6]),
+                            Double.parseDouble(vehicleData[7])
+                    );
+                    dealership.addVehicle(vehicle);
+                }
+            }
             reader.close();
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return dealership;
     }
-
     public static void saveDealership(){
 
     }
