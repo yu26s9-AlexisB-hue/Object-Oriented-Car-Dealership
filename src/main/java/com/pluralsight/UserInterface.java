@@ -47,4 +47,13 @@ public class UserInterface {
     public void processAllVehiclesRequest(){
         displayVehicles(dealership.getAllVehicles());
     }
+    public void findPriceRange(){
+
+    }
+    public void processFindVehiclesByPriceRequest(){
+        double minPrice = Console.promptForDouble("What is the minimum price to search for: ");
+        double maxPrice = Console.promptForDouble("Please enter a max price to ssearch for :");
+        displayVehicles(dealership.getVehiclesByPrice(minPrice, maxPrice));
+
+    }
 }

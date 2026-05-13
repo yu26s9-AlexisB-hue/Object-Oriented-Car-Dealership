@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Console {
@@ -12,11 +13,21 @@ public class Console {
      * @return the double the user selected.
      */
     public static double promptForDouble(String prompt) {
-
-        System.out.print(prompt);
-        double result =  scanner.nextDouble();
-        scanner.nextLine();
-        return result;
+//Taking note of what changed for the int
+//        System.out.print(prompt);
+//        double result =  scanner.nextDouble();
+//        scanner.nextLine();
+//        return result;
+        System.out.println(prompt);
+        double result;
+        while(true){
+            try {
+                result = scanner.nextDouble();
+                return result;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid selection, please enter a number: ");
+            }
+        }
 
     }
 
@@ -36,11 +47,24 @@ public class Console {
      * @return the int the user selected.
      */
     public static int promptForInt(String prompt) {
+// This is the older/original way to prompt for this
+//        System.out.print(prompt);
+//        int result =  scanner.nextInt();
+//        scanner.nextLine();
+//        return result;
 
-        System.out.print(prompt);
-        int result =  scanner.nextInt();
-        scanner.nextLine();
-        return result;
+        //This a new way to prompt the user and check for incorrect entries.
+        System.out.println(prompt);
+        int result;
+        while(true){
+            try{
+                result = scanner.nextInt();
+                return result;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid selection, please enter a number: ");
+            }
+            scanner.nextLine();
+        }
 
     }
 
