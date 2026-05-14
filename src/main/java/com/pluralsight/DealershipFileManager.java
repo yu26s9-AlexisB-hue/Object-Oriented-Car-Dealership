@@ -29,9 +29,11 @@ public class DealershipFileManager {
                 while ((line = reader.readLine()) != null){
                     String[] vehicleData = line.split("\\|");
 
+                    // vin   year make   model tp  clr  miles  price
+                    // 44901|2012|Honda|Civic|SUV|Gray|103221|6995.00
                     Vehicle vehicle = new Vehicle(
-                            Integer.parseInt(vehicleData[0]),
-                            Integer.parseInt(vehicleData[1]),
+                            Integer.parseInt(vehicleData[0]), //vin
+                            Integer.parseInt(vehicleData[1]), //year
                             vehicleData[2],
                             vehicleData[3],
                             vehicleData[4],
@@ -49,7 +51,26 @@ public class DealershipFileManager {
         }
         return dealership;
     }
-    public static void saveDealership(){
+    public static void saveDealership(Dealership dealership){
+        try {
+            FileWriter writer = new FileWriter("inventory.csv");
 
+            //first add one line to represent the dealership
+            writer.write(dealership.getName() + "|"+
+                    dealership.getAddress() + "|" +
+                    dealership.getPhone() + "\n");
+
+            //then loop through each of the dealerships vehicles and for each vehicle add one line
+            for(Vehicle vehicle : dealership.getAllVehicles()){
+                writer.write(vehicle.getEncodedVehicleLine());
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
+
+
+
 }

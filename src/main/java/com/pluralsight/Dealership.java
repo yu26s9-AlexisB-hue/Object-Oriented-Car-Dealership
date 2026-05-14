@@ -111,38 +111,8 @@ public class Dealership {
        return this.inventory;
     }
     public void addVehicle(Vehicle vehicle){
+        //add vehicles to array list
         inventory.add(vehicle);
-//        //add vehicles to array list
-//
-//        //prompting the user
-//        System.out.println("Vin: ");
-//        int vin = scanner.nextInt();
-//        scanner.nextLine();
-//        System.out.println("Year: ");
-//        int year = scanner.nextInt();
-//        scanner.nextLine();
-//        System.out.println("Make: ");
-//        String make = scanner.nextLine();
-//        System.out.println("Model: ");
-//        String model = scanner.nextLine();
-//        System.out.println("Vehicle Type: ");
-//        String vehicleType = scanner.nextLine();
-//        System.out.println("Color: ");
-//        String color = scanner.nextLine();
-//        System.out.println("Odometer: ");
-//        int odometer = scanner.nextInt();
-//        scanner.nextLine();
-//        System.out.println("Price: ");
-//        double price = scanner.nextDouble();
-
-        //creating a vehicle class
-      //  Vehicle v = new Vehicle(vin,year,make,model,vehicleType,color,odometer,price);
-
-        //Adding the vehicle to the ArrayList.
-
-
-
-
     }
     public void removeVehicle(int vehicleVin){
 

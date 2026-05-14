@@ -89,4 +89,16 @@ public class Vehicle {
     public String toString(){
         return vin + " " + year + " " + make + " " + model + " " + vehicleType + " " + color + " " + odometer + " " + price;
     }
+
+
+    public String getEncodedVehicleLine(){
+        return this.getVin() + "|" +
+                this.getYear() + "|" +
+                this.getMake() + "|" +
+                this.getModel() + "|" +
+                this.getVehicleType() + "|" +
+                this.getColor() + "|" +
+                this.getOdometer() + "|" +
+                this.getPrice() + "\n";
+    }
 }

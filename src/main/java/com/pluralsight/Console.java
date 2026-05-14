@@ -59,6 +59,8 @@ public class Console {
         while(true){
             try{
                 result = scanner.nextInt();
+                scanner.nextLine();
+
                 return result;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid selection, please enter a number: ");
