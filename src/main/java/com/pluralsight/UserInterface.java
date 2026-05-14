@@ -65,6 +65,7 @@ public class UserInterface {
                 case 9:
                     processRemoveVehicleRequest();
                     break;
+
                 default:
                     System.out.println("Invalid Entry.");
                     break;
